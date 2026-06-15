@@ -1,439 +1,837 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KC-Xchange | KittyCoins Trading</title>
+    
+    <!-- Favicon Configuration -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        #leaderboard-list::-webkit-scrollbar { width: 6px; }
+        #leaderboard-list::-webkit-scrollbar-track { background: transparent; }
+        #leaderboard-list::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+        #leaderboard-list::-webkit-scrollbar-thumb:hover { background: #475569; }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-<title>Fleur Neeven | O&O Portfolio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #fdf2f8; /* Zeer lichtroze achtergrond */
-    color: #333;
-    line-height: 1.6;
-}
-
-/* HERO */
-
-.hero {
-    background: linear-gradient(135deg, #db2777, #9d174d); /* Roze gradient */
-    color: white;
-    text-align: center;
-    padding: 90px 20px;
-}
-
-.profile-pic {
-    width: 170px;
-    height: 170px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid white;
-    margin-bottom: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 1.15rem;
-    opacity: 0.9;
-}
-
-/* CONTAINER */
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 60px 20px;
-}
-
-/* ABOUT */
-
-.about {
-    background: #fce7f3; /* Zachtroze achtergrond */
-    border-radius: 25px;
-    padding: 40px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    margin-bottom: 50px;
-}
-
-.about h2 {
-    margin-bottom: 20px;
-    color: #831843; /* Donkerroze tekst */
-}
-
-/* STATS */
-
-.stats {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-
-.stats div {
-    text-align: center;
-}
-
-.stats h3 {
-    color: #db2777; /* Opvallend roze */
-    font-size: 2rem;
-}
-
-.stats p {
-    color: #666;
-}
-
-/* TITLES */
-
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.2rem;
-    color: #831843; /* Donkerroze */
-}
-
-/* PROJECTS */
-
-.projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-}
-
-.card {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-}
-
-.card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
-
-.card-content {
-    padding: 25px;
-}
-
-.card h3 {
-    color: #831843; /* Donkerroze */
-    margin-bottom: 15px;
-}
-
-.card p {
-    color: #555;
-}
-
-/* TAGS */
-
-.tags {
-    margin-top: 15px;
-}
-
-.tag {
-    display: inline-block;
-    background: #fbcfe8; /* Lichtroze achtergrond */
-    color: #9d174d; /* Donkerroze tekst */
-    padding: 6px 12px;
-    border-radius: 30px;
-    font-size: 0.8rem;
-    margin: 4px;
-}
-
-/* TIMELINE */
-
-.timeline {
-    margin-top: 80px;
-    background: white;
-    padding: 40px;
-    border-radius: 25px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-.timeline h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #831843;
-}
-
-.timeline-item {
-    padding: 15px;
-    border-left: 4px solid #db2777; /* Roze lijn */
-    margin-bottom: 20px;
-    background: #fdf2f8; /* Zeer lichtroze achtergrond */
-}
-
-/* FOOTER */
-
-footer {
-    background: #831843; /* Donkerroze achtergrond */
-    color: white;
-    text-align: center;
-    padding: 40px 20px;
-    margin-top: 70px;
-}
-
-footer h3 {
-    margin-bottom: 10px;
-}
-
-/* MOBILE */
-
-@media(max-width: 768px){
-
-.hero h1 {
-    font-size: 2rem;
-}
-
-.profile-pic {
-    width: 130px;
-    height: 130px;
-}
-
-.stats {
-    gap: 20px;
-}
-
-}
-
-</style>
+        @media (max-width: 1023px) {
+            #sidebar { transform: translateX(-100%) !important; }
+            .sidebar-open #sidebar { transform: translateX(0) !important; }
+        }
+        @media (min-width: 1024px) {
+            #sidebar { transform: translateX(0) !important; }
+        }
+    </style>
 </head>
-<body>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen overflow-x-hidden selection:bg-amber-500 selection:text-slate-950">
 
-<header class="hero">
-
-    <img src="profielfoto.png" alt="Fleur Neeven" class="profile-pic">
-
-    <h1>Fleur Neeven</h1>
-
-    <p>
-        Creatieve leerling • Onderzoek & Ontwerpen • Probleemoplosser
-    </p>
-
-</header>
-
-<div class="container">
-
-    <section class="about">
-
-        <h2>Over mij</h2>
-
-        <p>
-            Mijn naam is Fleur Neeven. Tijdens het vak Onderzoek & Ontwerpen
-            werk ik aan projecten waarbij creativiteit, samenwerken en
-            probleemoplossend denken centraal staan.
-
-            In dit portfolio laat ik zien welke projecten ik heb uitgevoerd,
-            welke uitdagingen ik ben tegengekomen en wat ik daarvan heb
-            geleerd.
-        </p>
-
-        <div class="stats">
-
-            <div>
-                <h3>4+</h3>
-                <p>Projecten</p>
+    <!-- ANTI-ADBLOCK OVERLAY (SLAAT DE SITE OP SLOT) -->
+    <div id="adblock-overlay" class="hidden fixed inset-0 z-[9999] bg-slate-950/98 backdrop-blur-xl flex flex-col items-center justify-center p-6 text-center select-none animate-fade-in">
+        <div class="max-w-md bg-slate-900/60 border border-rose-500/30 p-8 rounded-3xl shadow-2xl space-y-6 relative">
+            <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-rose-500/10 border border-rose-500/30 rounded-2xl flex items-center justify-center text-rose-500 text-3xl shadow-lg">
+                <i class="fa-solid fa-shield-halved animate-pulse"></i>
             </div>
-
-            <div>
-                <h3>1</h3>
-                <p>Gewonnen project</p>
-            </div>
-
-            <div>
-                <h3>100%</h3>
-                <p>Inzet</p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <h2 class="section-title">Mijn Projecten</h2>
-
-    <div class="projects">
-
-        <div class="card">
-
-            <img src="hierknfoto.png" alt="Langzame Knikkerbaan">
-
-            <div class="card-content">
-
-                <h3>Project 1 - Langzame Knikkerbaan</h3>
-
-                <p>
-                    Mijn eerste O&O-project.we moesten met beperkte materialen
-                 een zo langzaam mogelijke knikkerbaan. Hierbij leerde
-                    ik ontwerpen, testen en samenwerken.dit was een opstart project.
+            <div class="space-y-2 pt-6">
+                <h2 class="text-2xl font-black text-rose-400 tracking-tight">AdBlocker Gedetecteerd!</h2>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Om de servers van <span class="text-amber-400 font-bold">KC-Xchange</span> gratis in de lucht te houden, zijn advertenties verplicht. Schakel je adblocker uit voor deze website om verder te gaan.
                 </p>
-
-                <div class="tags">
-                    <span class="tag">Ontwerpen</span>
-                    <span class="tag">Samenwerken</span>
-                    <span class="tag">Testen</span>
-                </div>
-
             </div>
-
-        </div>
-
-        <div class="card">
-
-            <img src="fleurphoto2.jpeg" alt="Vakkanjers">
-
-            <div class="card-content">
-
-                <h3>Project 2 - Vakkanjers Circulair Festival</h3>
-
-                <p>
-                    We bedachten een oplossing om bezoekers op festivals meer
-                    te laten recyclen. Dit project draaide om duurzaamheid,
-                    creativiteit en samenwerken.de samenwerking was hier het slechts omdat we een best moeilijke strat hadden.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">Duurzaamheid</span>
-                    <span class="tag">Onderzoek</span>
-                    <span class="tag">Creativiteit</span>
-                </div>
-
+            <div class="bg-slate-950/60 border border-slate-800 p-4 rounded-xl text-left text-[11px] text-slate-400 space-y-1.5 font-mono">
+                <p class="text-amber-400 font-bold mb-1">// Hoe zet ik het uit?</p>
+                <p>1. Klik op het AdBlock icoontje in je browserbalk.</p>
+                <p>2. Schakel de switch om voor deze website.</p>
+                <p>3. Klik hieronder op de herlaadknop.</p>
             </div>
-
+            <button onclick="window.location.reload();" class="w-full bg-rose-500 hover:bg-rose-600 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-rose-950/50 cursor-pointer text-xs uppercase tracking-wider transform active:scale-98">
+                <i class="fa-solid fa-rotate-right mr-2"></i> Ik heb hem uitgezet
+            </button>
         </div>
-
-        <div class="card">
-
-            <img src="fleurphoto3.jpeg" alt="Aqualectra">
-
-            <div class="card-content">
-
-                <h3>Project 3 - Aqualectra Kantine</h3>
-
-                <p>
-                    We ontwierpen een nieuwe kantine voor medewerkers.
-                    De ruimte moest moderner, gezelliger en aantrekkelijker
-                    worden. Dit project hebben wij gewonnen.ik zelf vond dit echt een heel leuk project omdat de samenwerking heel goed ging en omdat ik het best makkelijk vond.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">Interieur</span>
-                    <span class="tag">Presenteren</span>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <img src="watgeleerd.jpg" alt="Wat geleerd">
-
-            <div class="card-content">
-
-                <h3>Blauwalg bestrijden voor Zuiderzeemuseum</h3>
-
-                <p>We begonnen met een infograpihg maken over hoe je blauwalg kon bestrijden daarna moesten we kiezen programma aan passen of blauwalg bestrijden.
-                    we kozen voor blauwalg bestrijden.ons idee was het water kouder maken en water bewegen.we hadden ervoor gekozen om dit te presenteren in een glazen bak. 
-                    
-                </p>
-
-                <div class="tags">
-                    <span class="tag">Groei</span>
-                    <span class="tag">Ervaring</span>
-                    <span class="tag">Ontwikkeling</span>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <img src="fleurphoto4.jpeg" alt="Persoonlijke Groei">
-
-            <div class="card-content">
-
-                <h3>Persoonlijke Groei</h3>
-
-                <p>
-                    Tijdens O&O ben ik beter geworden in samenwerken,
-                    presenteren en het delen van mijn ideeën. Ik heb geleerd
-                    om uitdagingen aan te pakken en oplossingen te bedenken
-                    voor echte opdrachten.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">Zelfvertrouwen</span>
-                    <span class="tag">Presenteren</span>
-                    <span class="tag">Teamwork</span>
-                </div>
-
-            </div>
-
-        </div>
-
     </div>
 
-    <section class="timeline">
+    <!-- 1. AUTH VIEW -->
+    <div id="auth-view" class="min-h-screen flex flex-col items-center justify-center p-4 bg-radial from-slate-900 via-slate-950 to-slate-950 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-25"></div>
+        
+        <div class="max-w-md w-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 p-8 rounded-3xl shadow-2xl text-center space-y-8 relative z-10">
+            <div class="space-y-3">
+                <div class="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-amber-400/10 to-orange-500/10 rounded-2xl border border-amber-500/20 shadow-xl animate-bounce overflow-hidden p-2">
+                    <img src="logo.png" alt="KC Logo" class="w-full h-full object-contain">
+                </div>
+                <h1 class="text-4xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">KC-XCHANGE</h1>
+                <p class="text-slate-400 text-sm max-w-xs mx-auto">The official KittyCoins trading platform for legends.</p>
+            </div>
 
-        <h2>Mijn O&O Reis</h2>
+            <div class="border-t border-slate-800/60 relative">
+                <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-950/80 px-3 text-xs text-slate-500 uppercase tracking-widest font-semibold rounded-full">Sign In</span>
+            </div>
 
-        <div class="timeline-item">
-            2025 • Langzame Knikkerbaan
+            <div class="space-y-4">
+                <button id="btn-login" class="w-full flex items-center justify-center gap-3 bg-white text-slate-900 font-bold py-4 px-4 rounded-xl hover:bg-amber-400 transition-all duration-300 shadow-xl cursor-pointer transform active:scale-95">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" class="w-5 h-5">
+                    Sign in with Google
+                </button>
+            </div>
         </div>
+        <p class="text-xs text-slate-600 mt-12 relative z-10">&copy; 2026 KittyCoins Exchange &bull; Made by a KitaCat</p>
+    </div>
 
-        <div class="timeline-item">
-            2025 • Vakkanjers Circulair Festival
+    <!-- 2. MAIN APP VIEW -->
+    <div id="app-view" class="hidden min-h-screen flex bg-slate-900/30 relative">
+        
+        <!-- SIDEBAR CONTAINER -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-72 bg-slate-950/90 backdrop-blur-xl border-r border-slate-800/80 transition-transform duration-300 ease-in-out flex flex-col justify-between">
+            <div class="p-6 space-y-8">
+                <div class="flex items-center justify-between border-b border-slate-900 pb-5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-amber-500/10 rounded-lg flex items-center justify-center border border-amber-500/20 overflow-hidden p-1">
+                            <img src="logo.png" alt="KC" class="w-full h-full object-contain">
+                        </div>
+                        <h2 class="font-black tracking-widest text-amber-400 text-sm">KC-XCHANGE</h2>
+                    </div>
+                    <button id="btn-close-sidebar" class="lg:hidden text-slate-400 hover:text-white p-2 bg-slate-900 rounded-xl cursor-pointer">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <nav class="space-y-2">
+                    <button id="nav-dashboard" class="w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl bg-slate-900 text-amber-400 font-bold border border-slate-800/80 transition text-sm text-left cursor-pointer">
+                        <i class="fa-solid fa-chart-pie w-5"></i> Dashboard
+                    </button>
+                    <button id="nav-get-kc" class="w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-slate-400 hover:bg-slate-900/60 hover:text-white transition text-sm text-left cursor-pointer">
+                        <i class="fa-solid fa-ticket w-5 text-amber-500"></i> Kitty Lotto <span class="ml-auto text-[10px] bg-amber-500/20 text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded-md font-bold">NEW</span>
+                    </button>
+                    <button id="nav-settings" class="w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-slate-400 hover:bg-slate-900/60 hover:text-white transition text-sm text-left cursor-pointer">
+                        <i class="fa-solid fa-gear w-5"></i> Settings
+                    </button>
+                    <button id="nav-admin" class="hidden w-full flex items-center gap-3.5 px-4 py-3.5 rounded-xl text-purple-400 hover:bg-purple-950/30 font-bold transition text-sm text-left cursor-pointer border border-transparent hover:border-purple-900/40">
+                        <i class="fa-solid fa-crown w-5"></i> Admin Panel
+                    </button>
+                </nav>
+            </div>
+
+            <!-- AD ZONE INSIDE SIDEBAR (Hier kun je een kleine banner kwijt) -->
+            <div class="px-4 text-center">
+                <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-2 min-h-[60px] flex items-center justify-center text-[10px] text-slate-600 relative overflow-hidden">
+                    <span class="absolute top-0.5 left-1 text-[7px] uppercase tracking-wider text-slate-700">Ad Space</span>
+                    <!-- JOUW ADSTERRA BANNER SCRIPT CODE HIER PLAATSEN -->
+                    <span class="italic"><i class="fa-solid fa-rectangle-ad text-amber-600 mr-1"></i> Banner Advertentie Module</span>
+                </div>
+            </div>
+
+            <div class="p-4 m-4 border border-slate-900 bg-slate-950 rounded-2xl space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <img id="user-photo" src="" alt="Profile" class="w-10 h-10 rounded-xl border border-amber-400 object-cover">
+                        <span class="absolute -bottom-1 -right-1 w-3 h-3 bg-emerald-500 border-2 border-slate-950 rounded-full"></span>
+                    </div>
+                    <div class="truncate max-w-[145px]">
+                        <p id="user-display-name" class="text-xs font-black text-amber-400 truncate">@loading...</p>
+                        <p id="user-email" class="text-[10px] text-slate-500 truncate">loading...</p>
+                    </div>
+                </div>
+                <button id="btn-logout" class="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-rose-950/40 hover:text-rose-400 text-slate-400 py-3 rounded-xl text-xs font-bold cursor-pointer transition">
+                    <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+                </button>
+            </div>
+        </aside>
+
+        <div class="flex-1 lg:pl-72 min-h-screen flex flex-col">
+            
+            <!-- APPLICATION HEADER -->
+            <header class="border-b border-slate-800/80 bg-slate-950/50 backdrop-blur-md sticky top-0 z-40 p-4 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <button id="btn-open-sidebar" class="lg:hidden text-slate-400 hover:text-white p-2.5 bg-slate-900 rounded-xl border border-slate-800 cursor-pointer transition">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+                <div class="flex items-center gap-1.5 text-xs text-amber-400 font-mono bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl">
+                    <i class="fa-solid fa-user-astronaut text-slate-500"></i>
+                    <span id="topbar-username" class="font-bold">@guest</span>
+                </div>
+            </header>
+
+            <main class="flex-1 p-4 md:p-8 max-w-5xl w-full mx-auto">
+                
+                <!-- DASHBOARD VIEW -->
+                <div id="view-dashboard" class="space-y-8 animate-fade-in">
+                    <div class="grid gap-6 md:grid-cols-3">
+                        <div class="bg-gradient-to-br from-amber-500 to-orange-600 p-8 rounded-3xl shadow-xl relative overflow-hidden flex flex-col justify-between min-h-[160px]">
+                            <div class="absolute -right-8 -bottom-8 w-32 h-32 opacity-10 pointer-events-none">
+                                <img src="logo.png" alt="" class="w-full h-full object-contain brightness-0 invert">
+                            </div>
+                            <div class="relative z-10">
+                                <p class="text-xs uppercase tracking-widest text-amber-100 font-bold mb-2">My Balance</p>
+                                <div class="flex items-baseline gap-2">
+                                    <span id="balance-amount" class="text-5xl font-black tracking-tight">0.00</span>
+                                    <span class="text-xl font-bold text-amber-200">KC</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-2 bg-slate-900/50 border border-slate-800 p-6 rounded-3xl shadow-lg">
+                            <h3 class="text-lg font-bold text-white flex items-center gap-2 mb-4">
+                                <i class="fa-solid fa-paper-plane text-amber-400"></i> Send KittyCoins
+                            </h3>
+                            <form id="transfer-form" class="space-y-4">
+                                <div class="grid gap-4 sm:grid-cols-2">
+                                    <div>
+                                        <label class="block text-xs text-slate-400 mb-1.5 ml-1">Recipient Username</label>
+                                        <div class="relative">
+                                            <span class="absolute left-4 top-3.5 text-slate-500 font-bold">@</span>
+                                            <input type="text" id="receiver-username" required placeholder="username" class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-4 py-3 text-white focus:outline-none focus:border-amber-400 transition">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-slate-400 mb-1.5 ml-1">Amount</label>
+                                        <div class="relative">
+                                            <input type="number" id="transfer-amount" required min="0.01" step="0.01" placeholder="0.00" class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-4 pr-12 py-3 text-white focus:outline-none focus:border-amber-400 transition">
+                                            <span class="absolute right-4 top-3.5 text-xs text-slate-500 font-bold">KC</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" id="btn-send" class="w-full bg-amber-500 text-slate-950 font-bold py-3.5 rounded-xl hover:bg-amber-400 transition cursor-pointer">
+                                    Send Coins
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- AD ZONE BELOW BALANCE -->
+                    <div class="w-full bg-slate-900/40 border border-slate-800/80 rounded-3xl p-4 text-center relative overflow-hidden min-h-[90px] flex items-center justify-center">
+                        <span class="absolute top-1 left-3 text-[8px] uppercase tracking-widest text-slate-600 font-bold">Sponsor Banner</span>
+                        <!-- JOUW ADSTERRA 728x90 BANNER CODE HIER IN DE PLAATS SETTEN -->
+                        <div class="text-xs text-slate-500 flex items-center gap-2 italic">
+                            <i class="fa-solid fa-rectangle-ad text-amber-500/70"></i> Programmatic Banner Display Active
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 border border-slate-800 rounded-3xl p-6 shadow-lg">
+                        <div class="flex items-center justify-between mb-6 border-b border-slate-800/80 pb-4">
+                            <h3 class="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400 flex items-center gap-2">
+                                <i class="fa-solid fa-trophy text-amber-400"></i> Global Rankings
+                            </h3>
+                            <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping"></span> Live
+                            </span>
+                        </div>
+                        <div id="leaderboard-list" class="space-y-3 max-h-[400px] overflow-y-auto pr-2"></div>
+                        <div id="my-ranking-container" class="mt-5 pt-4 border-t border-slate-800">
+                            <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <span id="my-rank-tag" class="w-9 h-9 bg-amber-500 text-slate-950 font-black rounded-xl flex items-center justify-center text-sm">#-</span>
+                                    <p class="text-sm font-bold text-white">You (<span id="my-rank-user" class="text-amber-400">@username</span>)</p>
+                                </div>
+                                <p class="text-lg font-black text-amber-400"><span id="my-rank-balance">0.00</span> KC</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW: GET KC / INTERACTIVE KITTY LOTTO VIEW -->
+                <div id="view-get-kc" class="hidden space-y-6 animate-fade-in">
+                    <div class="space-y-1">
+                        <h2 class="text-2xl font-black text-amber-400 flex items-center gap-2">
+                            <i class="fa-solid fa-ticket"></i> Kitty Lotto Module
+                        </h2>
+                        <p class="text-xs text-slate-400">Claim gratis munten! Om de loterij te financieren draaien er banners onder en boven deze module.</p>
+                    </div>
+
+                    <!-- AD ZONE ABOVE LOTTO BOX -->
+                    <div class="w-full bg-slate-900/40 border border-slate-800/80 rounded-2xl p-2 text-center text-[10px] text-slate-600 min-h-[50px] flex items-center justify-center">
+                        <span><i class="fa-solid fa-rectangle-ad mr-1"></i> Top Banner Space (Adsterra 468x60 / 728x90)</span>
+                    </div>
+                    
+                    <div class="grid gap-6 md:grid-cols-3">
+                        <!-- Left explanation block -->
+                        <div class="bg-slate-900/50 border border-slate-800 p-6 rounded-3xl space-y-4 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center text-xl border border-amber-500/20">
+                                    <i class="fa-solid fa-clover"></i>
+                                </div>
+                                <h3 class="text-md font-bold text-white">Free Daily Draw</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    Klik op de knop om een gratis kraslot te activeren. Je wint gegarandeerd een klein of groot deel aan KittyCoins!
+                                </p>
+                                <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 text-[11px] font-mono text-slate-500 space-y-1">
+                                    <p class="text-amber-500 font-bold">// Kansverdeling:</p>
+                                    <p>&bull; 70% kans op: <span class="text-slate-300">0.10 - 0.50 KC</span></p>
+                                    <p>&bull; 25% kans op: <span class="text-slate-300">1.00 - 5.00 KC</span></p>
+                                    <p>&bull; 5% JACKPOT: <span class="text-emerald-400">25.00 KC!</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Main Interative Lotto Engine -->
+                        <div class="md:col-span-2 bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-8 flex flex-col items-center justify-center text-center relative overflow-hidden min-h-[320px]">
+                            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.05)_0%,transparent_70%)] pointer-events-none"></div>
+                            
+                            <div id="lotto-card" class="space-y-6 max-w-sm w-full bg-slate-900/60 border border-dashed border-slate-700 p-6 rounded-2xl relative z-10 shadow-inner">
+                                <div id="lotto-icon" class="text-5xl text-amber-500 animate-pulse">
+                                    <i class="fa-solid fa-gift"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <h4 id="lotto-status-title" class="text-lg font-black tracking-tight text-white">Klaar voor de trekking?</h4>
+                                    <p id="lotto-status-desc" class="text-xs text-slate-400">Open je gratis krasbox om direct je saldo op te waarderen.</p>
+                                </div>
+                                
+                                <button id="btn-trigger-lotto" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black py-4 rounded-xl shadow-lg hover:brightness-110 transition active:scale-98 cursor-pointer text-xs uppercase tracking-wider">
+                                    <i class="fa-solid fa-ticket mr-1.5"></i> Activeer Kraslot
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AD ZONE BELOW LOTTO BOX -->
+                    <div class="w-full bg-slate-900/40 border border-slate-800/80 rounded-2xl p-2 text-center text-[10px] text-slate-600 min-h-[50px] flex items-center justify-center">
+                        <span><i class="fa-solid fa-rectangle-ad mr-1"></i> Bottom Banner Space (Adsterra 468x60 / 728x90)</span>
+                    </div>
+                </div>
+
+                <!-- SETTINGS VIEW -->
+                <div id="view-settings" class="hidden space-y-6 animate-fade-in">
+                    <h2 class="text-2xl font-black text-amber-400 flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-gear"></i> Account Settings
+                    </h2>
+                    <div class="bg-slate-900/50 border border-slate-800 p-6 rounded-3xl max-w-xl shadow-lg">
+                        <h3 class="text-md font-bold text-white mb-2">Change Username</h3>
+                        <p class="text-xs text-slate-400 mb-6">Choose a unique handle so other users can find you and send you KittyCoins.</p>
+                        <form id="settings-username-form" class="space-y-4">
+                            <div class="relative">
+                                <span class="absolute left-4 top-3.5 text-slate-500 font-bold">@</span>
+                                <input type="text" id="settings-username-input" required placeholder="new_username" class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-4 py-3 text-white focus:outline-none focus:border-amber-400 transition">
+                            </div>
+                            <button type="submit" id="btn-save-username" class="bg-amber-500 text-slate-950 font-bold px-6 py-3.5 rounded-xl hover:bg-amber-400 cursor-pointer transition">
+                                Save Username
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ADMIN VIEW -->
+                <div id="view-admin" class="hidden space-y-6 animate-fade-in">
+                    <div class="border-b border-purple-900/40 pb-4 mb-4">
+                        <h2 class="text-2xl font-black text-purple-400 flex items-center gap-2">
+                            <i class="fa-solid fa-gavel"></i> Admin Panel
+                        </h2>
+                        <p class="text-xs text-purple-300/60 mt-1">Manage user coins and system roles.</p>
+                    </div>
+                    <div class="grid gap-6 md:grid-cols-2">
+                        <div class="bg-purple-950/10 border border-purple-900/30 p-6 rounded-3xl space-y-4">
+                            <h3 class="text-md font-bold text-purple-300 flex items-center gap-2">
+                                <i class="fa-solid fa-coins"></i> Override Balance
+                            </h3>
+                            <form id="admin-balance-form" class="space-y-4">
+                                <input type="text" id="admin-target-username" required placeholder="Target @username" class="w-full bg-slate-950 border border-purple-900/40 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500">
+                                <input type="number" id="admin-target-amount" required step="0.01" placeholder="New Balance Amount" class="w-full bg-slate-950 border border-purple-900/40 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500">
+                                <button type="submit" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3.5 rounded-xl cursor-pointer transition">
+                                    Update Balance
+                                </button>
+                            </form>
+                        </div>
+                        <div class="bg-purple-950/10 border border-purple-900/30 p-6 rounded-3xl space-y-4">
+                            <h3 class="text-md font-bold text-purple-300 flex items-center gap-2">
+                                <i class="fa-solid fa-crown"></i> Appoint Co-Admin
+                            </h3>
+                            <form id="admin-promote-form" class="space-y-4">
+                                <input type="text" id="admin-promote-username" required placeholder="Target @username" class="w-full bg-slate-950 border border-purple-900/40 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500">
+                                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 rounded-xl cursor-pointer transition">
+                                    Grant Admin Status
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
         </div>
+    </div>
 
-        <div class="timeline-item">
-            2026 • Aqualectra Kantine
-        </div>
+    <!-- CORE LOGIC FRAMEWORK MODULE -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, runTransaction, collection, query, orderBy, onSnapshot, where, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        <div class="timeline-item">
-            2026 • Persoonlijke Ontwikkeling
-        </div>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDra6ILu1IGCyZ64fTfxKYGoQqEL6CbUFE",
+            authDomain: "kc-xchange.firebaseapp.com",
+            projectId: "kc-xchange",
+            storageBucket: "kc-xchange.firebasestorage.app",
+            messagingSenderId: "25389828665",
+            appId: "1:25389828665:web:0e42a57c7176e06b499be8",
+            measurementId: "G-G7TY0C4T3X"
+        };
 
-    </section>
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
 
-</div>
+        // ANTI-ADBLOCK DETECTOR ENGINE (PURE JS)
+        function runAdBlockCheck() {
+            const bait = document.createElement('div');
+            bait.className = 'adsbox ad-zone banner-ads premium-ad text-ads ad-placement';
+            bait.style.cssText = 'width:1px !important; height:1px !important; position:absolute !important; left:-9999px !important; top:-9999px !important;';
+            document.body.appendChild(bait);
+            
+            setTimeout(() => {
+                const overlay = document.getElementById('adblock-overlay');
+                let isBlocked = false;
 
-<footer>
+                if (window.getComputedStyle) {
+                    const styles = window.getComputedStyle(bait);
+                    if (styles.getPropertyValue('display') === 'none' || styles.getPropertyValue('visibility') === 'hidden') {
+                        isBlocked = true;
+                    }
+                }
+                if (bait.offsetHeight === 0) {
+                    isBlocked = true;
+                }
 
-    <h3>Fleur Neeven</h3>
+                document.body.removeChild(bait);
 
-    <p>Onderzoek & Ontwerpen Portfolio</p>
+                if (isBlocked && overlay) {
+                    overlay.classList.remove('hidden');
+                    document.getElementById('auth-view').classList.add('hidden');
+                    document.getElementById('app-view').classList.add('hidden');
+                }
+            }, 250);
+        }
 
-    <p>Schooljaar 2025 - 2026</p>
+        window.addEventListener('DOMContentLoaded', runAdBlockCheck);
+        setInterval(runAdBlockCheck, 6000);
 
-</footer>
 
+        const authView = document.getElementById('auth-view');
+        const appView = document.getElementById('app-view');
+        const btnLogin = document.getElementById('btn-login');
+        const btnLogout = document.getElementById('btn-logout');
+        const balanceAmount = document.getElementById('balance-amount');
+        const transferForm = document.getElementById('transfer-form');
+        const btnSend = document.getElementById('btn-send');
+
+        const userDisplayName = document.getElementById('user-display-name');
+        const userEmail = document.getElementById('user-email');
+        const userPhoto = document.getElementById('user-photo');
+        const topbarUsername = document.getElementById('topbar-username');
+
+        const btnOpenSidebar = document.getElementById('btn-open-sidebar');
+        const btnCloseSidebar = document.getElementById('btn-close-sidebar');
+
+        const navDashboard = document.getElementById('nav-dashboard');
+        const navGetKc = document.getElementById('nav-get-kc');
+        const navSettings = document.getElementById('nav-settings');
+        const navAdmin = document.getElementById('nav-admin');
+
+        const viewDashboard = document.getElementById('view-dashboard');
+        const viewGetKc = document.getElementById('view-get-kc');
+        const viewSettings = document.getElementById('view-settings');
+        const viewAdmin = document.getElementById('view-admin');
+
+        const settingsUsernameForm = document.getElementById('settings-username-form');
+        const settingsUsernameInput = document.getElementById('settings-username-input');
+        const adminBalanceForm = document.getElementById('admin-balance-form');
+        const adminPromoteForm = document.getElementById('admin-promote-form');
+
+        const leaderboardList = document.getElementById('leaderboard-list');
+        const myRankTag = document.getElementById('my-rank-tag');
+        const myRankUser = document.getElementById('my-rank-user');
+        const myRankBalance = document.getElementById('my-rank-balance');
+
+        let leaderboardUnsubscribe = null;
+
+        if (btnOpenSidebar) {
+            btnOpenSidebar.addEventListener('click', (e) => {
+                e.stopPropagation();
+                document.body.classList.add('sidebar-open');
+            });
+        }
+        if (btnCloseSidebar) {
+            btnCloseSidebar.addEventListener('click', () => {
+                document.body.classList.remove('sidebar-open');
+            });
+        }
+        document.addEventListener('click', (e) => {
+            const sidebarEl = document.getElementById('sidebar');
+            const btnOpen = document.getElementById('btn-open-sidebar');
+            if (document.body.classList.contains('sidebar-open')) {
+                if (sidebarEl && !sidebarEl.contains(e.target) && btnOpen && !btnOpen.contains(e.target)) {
+                    document.body.classList.remove('sidebar-open');
+                }
+            }
+        });
+
+        function switchView(activeNav, activeView) {
+            const views = [viewDashboard, viewGetKc, viewSettings, viewAdmin];
+            const navs = [navDashboard, navGetKc, navSettings, navAdmin];
+            
+            views.forEach(v => { if(v) v.classList.add('hidden'); });
+            navs.forEach(n => { if(n) n.classList.remove('bg-slate-900', 'text-amber-400', 'font-bold', 'bg-purple-950/30', 'text-purple-400'); });
+
+            if(activeView) activeView.classList.remove('hidden');
+            
+            if(activeNav) {
+                if (activeNav === navAdmin) {
+                    activeNav.classList.add('bg-purple-950/30', 'text-purple-400', 'font-bold');
+                } else {
+                    activeNav.classList.add('bg-slate-900', 'text-amber-400', 'font-bold');
+                }
+            }
+            document.body.classList.remove('sidebar-open');
+        }
+
+        if(navDashboard) navDashboard.addEventListener('click', () => switchView(navDashboard, viewDashboard));
+        if(navGetKc) navGetKc.addEventListener('click', () => switchView(navGetKc, viewGetKc));
+        if(navSettings) navSettings.addEventListener('click', () => switchView(navSettings, viewSettings));
+        if(navAdmin) navAdmin.addEventListener('click', () => {
+            if(auth.currentUser && auth.currentUser.email.toLowerCase().trim() === 'littendekitten@gmail.com') {
+                switchView(navAdmin, viewAdmin);
+            } else {
+                alert("Access Denied.");
+            }
+        });
+
+        async function generateUniqueGuestName() {
+            let exists = true;
+            let guestName = "";
+            while (exists) {
+                let rand = Math.floor(1000 + Math.random() * 9000);
+                guestName = `kc-guest-${rand}`;
+                const q = query(collection(db, "wallets"), where("username", "==", guestName));
+                try {
+                    const snap = await getDocs(q);
+                    if (snap.empty) exists = false;
+                } catch(e) {
+                    exists = false;
+                }
+            }
+            return guestName;
+        }
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                if(document.getElementById('adblock-overlay').classList.contains('hidden')) {
+                    authView.classList.add('hidden');
+                    appView.remove('hidden');
+                    appView.classList.remove('hidden');
+                }
+
+                const targetEmailClean = user.email.toLowerCase().trim();
+                userEmail.innerText = targetEmailClean;
+                userPhoto.src = user.photoURL || 'https://ui-avatars.com/api/?name=User&background=f59e0b&color=fff';
+
+                const isMasterAdminEmail = targetEmailClean === 'littendekitten@gmail.com';
+
+                if (isMasterAdminEmail && navAdmin) {
+                    navAdmin.classList.remove('hidden');
+                } else if (navAdmin) {
+                    navAdmin.classList.add('hidden');
+                }
+
+                const userRef = doc(db, "wallets", targetEmailClean);
+                let currentUsername = "";
+
+                try {
+                    let userSnap = await getDoc(userRef);
+                    if (userSnap.exists()) {
+                        const data = userSnap.data();
+                        currentUsername = data.username || await generateUniqueGuestName();
+                        balanceAmount.innerText = (data.balance || 0).toFixed(2);
+                        
+                        if (isMasterAdminEmail && !data.isAdmin) {
+                            await setDoc(userRef, { isAdmin: true }, { merge: true });
+                        }
+                    } else {
+                        currentUsername = await generateUniqueGuestName();
+                        const startBalance = 0.00;
+                        await setDoc(userRef, {
+                            name: user.displayName,
+                            email: targetEmailClean,
+                            username: currentUsername,
+                            balance: startBalance,
+                            isAdmin: isMasterAdminEmail,
+                            createdAt: new Date()
+                        }, { merge: true });
+                        balanceAmount.innerText = startBalance.toFixed(2);
+                    }
+
+                    userDisplayName.innerText = `@${currentUsername}`;
+                    topbarUsername.innerText = `@${currentUsername}`;
+                    settingsUsernameInput.value = currentUsername;
+
+                    startLeaderboard(targetEmailClean);
+                } catch (error) {
+                    console.error("Firestore loading fault: ", error);
+                }
+            } else {
+                if(document.getElementById('adblock-overlay').classList.contains('hidden')) {
+                    authView.classList.remove('hidden');
+                }
+                appView.classList.add('hidden');
+                if (navAdmin) navAdmin.classList.add('hidden');
+                if (leaderboardUnsubscribe) leaderboardUnsubscribe();
+            }
+        });
+
+        if (btnLogin) {
+            btnLogin.addEventListener('click', async () => {
+                try {
+                    await signInWithPopup(auth, provider);
+                } catch (error) {
+                    alert("Authentication failure occurred: " + error.message);
+                }
+            });
+        }
+
+        if (btnLogout) {
+            btnLogout.addEventListener('click', async () => {
+                try {
+                    await signOut(auth);
+                } catch (error) {}
+            });
+        }
+
+        if(settingsUsernameForm) {
+            settingsUsernameForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                let newUsername = settingsUsernameInput.value.trim().toLowerCase().replace(/\s+/g, '');
+                if (!newUsername || newUsername.includes('@')) return alert("Invalid username format.");
+
+                const myEmail = auth.currentUser.email.toLowerCase();
+                try {
+                    const q = query(collection(db, "wallets"), where("username", "==", newUsername));
+                    const querySnap = await getDocs(q);
+                    let isTaken = false;
+                    querySnap.forEach((doc) => { if (doc.id !== myEmail) isTaken = true; });
+
+                    if (isTaken) return alert(`Username @${newUsername} is taken!`);
+
+                    await setDoc(doc(db, "wallets", myEmail), { username: newUsername }, { merge: true });
+                    userDisplayName.innerText = `@${newUsername}`;
+                    topbarUsername.innerText = `@${newUsername}`;
+                    alert(`Public username updated to @${newUsername}!`);
+                } catch (err) { alert(err.message); }
+            });
+        }
+
+        function startLeaderboard(currentUserEmail) {
+            const q = query(collection(db, "wallets"), orderBy("balance", "desc"));
+            leaderboardUnsubscribe = onSnapshot(q, (snapshot) => {
+                if(!leaderboardList) return;
+                leaderboardList.innerHTML = "";
+                let currentRank = 1, userRank = -1, userCurrentBalance = 0, userCurrentName = "guest";
+
+                snapshot.forEach((docSnap) => {
+                    const data = docSnap.data();
+                    const email = data.email || docSnap.id;
+                    const uname = data.username || "guest";
+                    const balance = data.balance || 0;
+
+                    if (email === currentUserEmail) {
+                        userRank = currentRank;
+                        userCurrentBalance = balance;
+                        userCurrentName = uname;
+                        balanceAmount.innerText = balance.toFixed(2);
+                    }
+
+                    if (currentRank <= 10) {
+                        let medal = "", rowStyle = "bg-slate-950 border border-slate-800", badgeStyle = "bg-slate-800 text-slate-400";
+                        if (currentRank === 1) { medal = '🏆 '; rowStyle = "bg-amber-500/10 border border-amber-500/30"; badgeStyle = "bg-amber-500 text-slate-950 font-black"; }
+                        else if (currentRank === 2) { medal = '🥈 '; rowStyle = "bg-slate-400/10 border border-slate-400/20"; badgeStyle = "bg-slate-300 text-slate-950 font-black"; }
+                        else if (currentRank === 3) { medal = '🥉 '; rowStyle = "bg-amber-700/10 border border-amber-700/20"; badgeStyle = "bg-amber-700 text-white font-black"; }
+
+                        if (email === currentUserEmail) rowStyle += " ring-1 ring-amber-400";
+
+                        const rowHtml = `
+                            <div class="flex items-center justify-between p-3 rounded-xl ${rowStyle}">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-7 h-7 flex items-center justify-center text-xs rounded-lg ${badgeStyle}">#${currentRank}</span>
+                                    <p class="text-sm font-semibold text-white">@${uname} ${medal}</p>
+                                </div>
+                                <p class="text-sm font-bold text-amber-400">${balance.toFixed(2)} <span class="text-[10px] text-slate-500">KC</span></p>
+                            </div>`;
+                        leaderboardList.insertAdjacentHTML('beforeend', rowHtml);
+                    }
+                    currentRank++;
+                });
+
+                if (userRank !== -1) {
+                    myRankTag.innerText = `#${userRank}`;
+                    myRankUser.innerText = `@${userCurrentName}`;
+                    myRankBalance.innerText = userCurrentBalance.toFixed(2);
+                }
+            });
+        }
+
+        if(transferForm) {
+            transferForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const targetUname = document.getElementById('receiver-username').value.trim().toLowerCase().replace('@', '');
+                const amount = parseFloat(document.getElementById('transfer-amount').value);
+                const myEmail = auth.currentUser.email.toLowerCase();
+
+                if (isNaN(amount) || amount <= 0) return alert("Enter a valid amount.");
+                if(btnSend) { btnSend.disabled = true; btnSend.innerText = "Processing..."; }
+
+                try {
+                    const q = query(collection(db, "wallets"), where("username", "==", targetUname));
+                    const targetQuerySnap = await getDocs(q);
+
+                    if (targetQuerySnap.empty) throw new Error(`Profile @${targetUname} not found.`);
+
+                    let targetEmail = "";
+                    targetQuerySnap.forEach((doc) => { targetEmail = doc.id; });
+                    if (targetEmail === myEmail) throw new Error("Self-transfers are prohibited.");
+
+                    const myDocRef = doc(db, "wallets", myEmail);
+                    const targetDocRef = doc(db, "wallets", targetEmail);
+
+                    await runTransaction(db, async (transaction) => {
+                        const mySnap = await transaction.get(myDocRef);
+                        const myCurrentBal = mySnap.data().balance || 0;
+                        if (myCurrentBal < amount) throw new Error("Insufficient trade balance assets.");
+
+                        const targetSnap = await transaction.get(targetDocRef);
+                        const targetCurrentBal = targetSnap.data().balance || 0;
+
+                        transaction.update(myDocRef, { balance: myCurrentBal - amount });
+                        transaction.update(targetDocRef, { balance: targetCurrentBal + amount });
+                    });
+
+                    alert(`Successfully transferred ${amount.toFixed(2)} KC to @${targetUname}!`);
+                    transferForm.reset();
+                } catch (err) {
+                    alert("Transfer Error: " + err.message);
+                } finally {
+                    if(btnSend) { btnSend.disabled = false; btnSend.innerText = "Send Coins"; }
+                }
+            });
+        }
+
+        // NEW: INTERACTIVE KITTY LOTTO ENGINE (WITH SECURE FIRESTORE TRANSACTION)
+        const btnTriggerLotto = document.getElementById('btn-trigger-lotto');
+        const lottoIcon = document.getElementById('lotto-icon');
+        const lottoStatusTitle = document.getElementById('lotto-status-title');
+        const lottoStatusDesc = document.getElementById('lotto-status-desc');
+
+        if(btnTriggerLotto) {
+            btnTriggerLotto.addEventListener('click', async () => {
+                if(!auth.currentUser) return;
+                
+                // Schakel knop uit tijdens animatie en verwerking
+                btnTriggerLotto.disabled = true;
+                btnTriggerLotto.innerText = "Kraslot openen...";
+                lottoIcon.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i>`;
+                lottoStatusTitle.innerText = "Trekking is bezig...";
+                lottoStatusDesc.innerText = "Je kraslot wordt gecontroleerd in de database...";
+
+                // Genereer winst op basis van kansverdeling
+                const rand = Math.random() * 100;
+                let winAmount = 0;
+
+                if (rand < 70) {
+                    // 70% kans: Tussen 0.10 en 0.50 KC
+                    winAmount = parseFloat((Math.random() * (0.50 - 0.10) + 0.10).toFixed(2));
+                } else if (rand < 95) {
+                    // 25% kans: Tussen 1.00 en 5.00 KC
+                    winAmount = parseFloat((Math.random() * (5.00 - 1.00) + 1.00).toFixed(2));
+                } else {
+                    // 5% kans: De Grote Jackpot!
+                    winAmount = 25.00;
+                }
+
+                const myEmail = auth.currentUser.email.toLowerCase();
+                const myDocRef = doc(db, "wallets", myEmail);
+
+                // Vertraging voor de spanning (1.5 seconde animatie)
+                setTimeout(async () => {
+                    try {
+                        await runTransaction(db, async (transaction) => {
+                            const mySnap = await transaction.get(myDocRef);
+                            if (!mySnap.exists()) throw new Error("Wallet bestaat niet.");
+                            
+                            const currentBal = mySnap.data().balance || 0;
+                            transaction.update(myDocRef, { balance: currentBal + winAmount });
+                        });
+
+                        // Succes weergave updaten
+                        if (winAmount === 25.00) {
+                            lottoIcon.innerHTML = `<i class="fa-solid fa-trophy text-amber-400 animate-bounce"></i>`;
+                            lottoStatusTitle.innerText = "🚨 JACKPOT WINST! 🚨";
+                            lottoStatusTitle.className = "text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 animate-pulse";
+                        } else {
+                            lottoIcon.innerHTML = `<i class="fa-solid fa-coins text-emerald-400"></i>`;
+                            lottoStatusTitle.innerText = `+${winAmount.toFixed(2)} KC GEWONNEN!`;
+                            lottoStatusTitle.className = "text-xl font-black text-emerald-400";
+                        }
+                        lottoStatusDesc.innerText = "Gefeliciteerd! De munten zijn direct bijgeschreven op je balans.";
+                        btnTriggerLotto.innerText = "Nog een keer spelen";
+
+                    } catch (err) {
+                        alert("Lotto Fout: " + err.message);
+                        lottoIcon.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
+                        lottoStatusTitle.innerText = "Trekking mislukt";
+                        lottoStatusDesc.innerText = "Er ging iets fout bij het verwerken van je winst.";
+                        btnTriggerLotto.innerText = "Probeer Opnieuw";
+                    } finally {
+                        btnTriggerLotto.disabled = false;
+                    }
+                }, 1500);
+            });
+        }
+
+
+        if (adminBalanceForm) {
+            adminBalanceForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const rawInputName = document.getElementById('admin-target-username').value.trim().toLowerCase().replace('@', '');
+                const targetAmount = parseFloat(document.getElementById('admin-target-amount').value);
+
+                try {
+                    const q = query(collection(db, "wallets"), where("username", "==", rawInputName));
+                    const snap = await getDocs(q);
+                    if (snap.empty) return alert("User not located.");
+
+                    let userEmailId = "";
+                    snap.forEach(d => userEmailId = d.id);
+
+                    await setDoc(doc(db, "wallets", userEmailId), { balance: targetAmount }, { merge: true });
+                    alert(`Balance forced override for @${rawInputName} set to ${targetAmount.toFixed(2)} KC.`);
+                    adminBalanceForm.reset();
+                } catch (err) { alert(err.message); }
+            });
+        }
+
+        if (adminPromoteForm) {
+            adminPromoteForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const rawInputName = document.getElementById('admin-promote-username').value.trim().toLowerCase().replace('@', '');
+
+                try {
+                    const q = query(collection(db, "wallets"), where("username", "==", rawInputName));
+                    const snap = await getDocs(q);
+                    if (snap.empty) return alert("User handle empty.");
+
+                    let userEmailId = "";
+                    snap.forEach(d => userEmailId = d.id);
+
+                    await setDoc(doc(db, "wallets", userEmailId), { isAdmin: true }, { merge: true });
+                    alert(`Admin rights granted to @${rawInputName}.`);
+                    adminPromoteForm.reset();
+                } catch (err) { alert(err.message); }
+            });
+        }
+    </script>
 </body>
 </html>
