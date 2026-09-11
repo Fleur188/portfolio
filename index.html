@@ -223,6 +223,176 @@ footer h3 {
 
 }
 
+
+/* ===== PREMIUM PORTFOLIO UPGRADE ===== */
+:root{
+    --pink:#db2777;
+    --pink-dark:#9d174d;
+    --pink-deep:#831843;
+    --pink-soft:#fce7f3;
+    --pink-bg:#fff7fb;
+    --text:#252238;
+    --muted:#6b6878;
+    --border:#f0dce7;
+    --shadow:0 12px 35px rgba(131,24,67,.09);
+    --shadow-hover:0 22px 55px rgba(157,23,77,.16);
+}
+body{
+    background:
+      radial-gradient(circle at 8% 5%,rgba(219,39,119,.10),transparent 26rem),
+      radial-gradient(circle at 92% 20%,rgba(251,113,133,.10),transparent 24rem),
+      var(--pink-bg);
+    color:var(--text);
+}
+.hero{
+    position:relative;
+    overflow:hidden;
+    min-height:520px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:
+      radial-gradient(circle at 20% 20%,rgba(255,255,255,.14),transparent 18rem),
+      radial-gradient(circle at 80% 80%,rgba(255,255,255,.10),transparent 20rem),
+      linear-gradient(135deg,#db2777 0%,#b91c61 48%,#831843 100%);
+}
+.hero::before,.hero::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.18);
+}
+.hero::before{width:330px;height:330px;right:-110px;top:-130px}
+.hero::after{width:240px;height:240px;left:-100px;bottom:-120px}
+.profile-pic{
+    position:relative;
+    z-index:1;
+    width:180px;height:180px;
+    border:6px solid rgba(255,255,255,.95);
+    box-shadow:0 18px 50px rgba(45,0,25,.28);
+    transition:transform .35s ease;
+}
+.profile-pic:hover{transform:scale(1.04) rotate(1deg)}
+.hero h1{position:relative;z-index:1;font-size:clamp(2.5rem,7vw,4.5rem);letter-spacing:-.04em}
+.hero p{position:relative;z-index:1}
+.container{max-width:1180px;padding:75px 24px}
+.about{
+    position:relative;
+    background:rgba(255,255,255,.88);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+}
+.about::after{
+    content:"✦";
+    position:absolute;
+    right:30px;top:20px;
+    font-size:5rem;
+    color:var(--pink);
+    opacity:.07;
+}
+.about h2,.section-title,.timeline h2{color:var(--pink-deep)}
+.stats div{
+    min-width:120px;
+    padding:14px 20px;
+    border-radius:16px;
+    background:var(--pink-bg);
+    border:1px solid var(--border);
+}
+.stats h3{font-size:2.1rem}
+.section-title{font-size:2.5rem;letter-spacing:-.04em}
+.projects{gap:28px}
+.card{
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
+}
+.card:hover{
+    transform:translateY(-9px);
+    box-shadow:var(--shadow-hover);
+    border-color:#edb9d1;
+}
+.card img{
+    height:240px;
+    transition:transform .45s ease;
+}
+.card:hover img{transform:scale(1.035)}
+.card-content{padding:26px}
+.card h3{font-size:1.15rem}
+.card p{line-height:1.75}
+.card-desc{
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:3;
+    overflow:hidden;
+    transition:opacity .2s ease;
+}
+.card.expanded .card-desc{
+    display:block;
+    -webkit-line-clamp:unset;
+    overflow:visible;
+}
+.card-toggle{
+    width:100%;
+    margin-top:18px;
+    padding:11px 15px;
+    border:1px solid #efc5d9;
+    border-radius:12px;
+    background:var(--pink-soft);
+    color:var(--pink-dark);
+    font:600 .82rem 'Poppins',sans-serif;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    transition:background .2s,transform .2s;
+}
+.card-toggle:hover{background:#f9d8e8}
+.card-toggle:active{transform:scale(.98)}
+.card-toggle svg{width:16px;height:16px;transition:transform .25s}
+.card.expanded .card-toggle svg{transform:rotate(180deg)}
+.card.expanded .card-desc{animation:openCard .25s ease}
+@keyframes openCard{
+    from{opacity:.45;transform:translateY(-4px)}
+    to{opacity:1;transform:none}
+}
+.toggle-all{
+    display:block;
+    margin:0 auto 28px;
+    border:1px solid #edbfd4;
+    background:white;
+    color:var(--pink-dark);
+    border-radius:999px;
+    padding:9px 16px;
+    font:600 .8rem 'Poppins',sans-serif;
+    cursor:pointer;
+    transition:.2s;
+}
+.toggle-all:hover{background:var(--pink-soft);transform:translateY(-1px)}
+.timeline{
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+}
+.timeline-item{
+    border-left-width:5px;
+    border-radius:0 12px 12px 0;
+    transition:transform .2s,background .2s;
+}
+.timeline-item:hover{transform:translateX(5px);background:#fce7f3}
+footer{
+    background:linear-gradient(135deg,#831843,#58102e);
+}
+@media(max-width:768px){
+    .hero{min-height:450px;padding:70px 20px}
+    .profile-pic{width:145px;height:145px}
+    .container{padding:55px 18px}
+    .about{padding:28px}
+    .section-title{font-size:2rem}
+    .projects{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
@@ -233,7 +403,7 @@ footer h3 {
 
     <h1>Fleur Neeven</h1>
 
-    <p>
+    <p class="card-desc">
         Creatieve leerling • Onderzoek & Ontwerpen • Probleemoplosser
     </p>
 
@@ -245,7 +415,7 @@ footer h3 {
 
         <h2>Over mij</h2>
 
-        <p>
+        <p class="card-desc">
             Mijn naam is Fleur Neeven. Tijdens het vak Onderzoek & Ontwerpen
             werk ik aan projecten waarbij creativiteit, samenwerken en
             probleemoplossend denken centraal staan.
@@ -278,6 +448,8 @@ footer h3 {
 
     <h2 class="section-title">Mijn Projecten</h2>
 
+    <button class="toggle-all" id="toggle-all" type="button">Alles uitklappen</button>
+
     <div class="projects">
 
         <div class="card">
@@ -288,11 +460,18 @@ footer h3 {
 
                 <h3>Project 1 - Langzame Knikkerbaan</h3>
 
-                <p>
+                <p class="card-desc">
                     Mijn eerste O&O-project.we moesten met beperkte materialen
                  een zo langzaam mogelijke knikkerbaan. Hierbij leerde
                     ik ontwerpen, testen en samenwerken.dit was een opstart project.
                 </p>
+
+                <button class="card-toggle" type="button" aria-expanded="false">
+                    <span class="toggle-text">Meer lezen</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                        <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                </button>
 
                 <div class="tags">
                     <span class="tag">Ontwerpen</span>
@@ -312,11 +491,18 @@ footer h3 {
 
                 <h3>Project 2 - Vakkanjers Circulair Festival</h3>
 
-                <p>
+                <p class="card-desc">
                     We bedachten een oplossing om bezoekers op festivals meer
                     te laten recyclen. Dit project draaide om duurzaamheid,
                     creativiteit en samenwerken.de samenwerking was hier het slechts omdat we een best moeilijke strat hadden.
                 </p>
+
+                <button class="card-toggle" type="button" aria-expanded="false">
+                    <span class="toggle-text">Meer lezen</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                        <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                </button>
 
                 <div class="tags">
                     <span class="tag">Duurzaamheid</span>
@@ -336,11 +522,18 @@ footer h3 {
 
                 <h3>Project 3 - Aqualectra Kantine</h3>
 
-                <p>
+                <p class="card-desc">
                     We ontwierpen een nieuwe kantine voor medewerkers.
                     De ruimte moest moderner, gezelliger en aantrekkelijker
                     worden. Dit project hebben wij gewonnen.ik zelf vond dit echt een heel leuk project omdat de samenwerking heel goed ging en omdat ik het best makkelijk vond.
                 </p>
+
+                <button class="card-toggle" type="button" aria-expanded="false">
+                    <span class="toggle-text">Meer lezen</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                        <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                </button>
 
                 <div class="tags">
                     <span class="tag">Interieur</span>
@@ -364,6 +557,13 @@ footer h3 {
                     
                 </p>
 
+                <button class="card-toggle" type="button" aria-expanded="false">
+                    <span class="toggle-text">Meer lezen</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                        <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                </button>
+
                 <div class="tags">
                     <span class="tag">Groei</span>
                     <span class="tag">Ervaring</span>
@@ -382,12 +582,19 @@ footer h3 {
 
                 <h3>Persoonlijke Groei</h3>
 
-                <p>
+                <p class="card-desc">
                     Tijdens O&O ben ik beter geworden in samenwerken,
                     presenteren en het delen van mijn ideeën. Ik heb geleerd
                     om uitdagingen aan te pakken en oplossingen te bedenken
                     voor echte opdrachten.
                 </p>
+
+                <button class="card-toggle" type="button" aria-expanded="false">
+                    <span class="toggle-text">Meer lezen</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                        <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                </button>
 
                 <div class="tags">
                     <span class="tag">Zelfvertrouwen</span>
@@ -431,6 +638,47 @@ footer h3 {
     <p>Schooljaar 2025 - 2026</p>
 
 </footer>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(function(card){
+        const button = card.querySelector('.card-toggle');
+        if(!button) return;
+
+        button.addEventListener('click', function(){
+            const expanded = card.classList.toggle('expanded');
+            button.setAttribute('aria-expanded', String(expanded));
+
+            const text = button.querySelector('.toggle-text');
+            if(text){
+                text.textContent = expanded ? 'Minder lezen' : 'Meer lezen';
+            }
+        });
+    });
+
+    const allButton = document.getElementById('toggle-all');
+    if(allButton){
+        allButton.addEventListener('click', function(){
+            const shouldExpand = Array.from(cards).some(card => !card.classList.contains('expanded'));
+
+            cards.forEach(function(card){
+                card.classList.toggle('expanded', shouldExpand);
+                const button = card.querySelector('.card-toggle');
+                if(!button) return;
+                button.setAttribute('aria-expanded', String(shouldExpand));
+
+                const text = button.querySelector('.toggle-text');
+                if(text) text.textContent = shouldExpand ? 'Minder lezen' : 'Meer lezen';
+            });
+
+            allButton.textContent = shouldExpand ? 'Alles inklappen' : 'Alles uitklappen';
+        });
+    }
+});
+</script>
 
 </body>
 </html>
